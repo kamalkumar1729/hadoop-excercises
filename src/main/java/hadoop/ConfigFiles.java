@@ -8,9 +8,6 @@ import org.apache.hadoop.fs.Path;
 import java.io.IOException;
 
 public class ConfigFiles {
-
-
-
     public static void main(String[] args) throws Exception {
         System.out.println("hello hadoop");
         Configuration conf = new Configuration();

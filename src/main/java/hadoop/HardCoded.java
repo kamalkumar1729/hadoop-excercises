@@ -24,10 +24,6 @@ public class HardCoded {
            // e.printStackTrace();
             System.out.println("error in connecting to HDFS ");
         }
-
-
-
-
        // System.out.println(fs.exists(new Path("/data")));
         System.out.println(fs.exists(new Path("/")));
         System.out.println(fs.mkdirs(new Path("/data")));
