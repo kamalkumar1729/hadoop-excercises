@@ -10,7 +10,7 @@ import org.apache.hadoop.hbase.client.Table;
 
 import java.io.IOException;
 
-public class HBaseConnect {
+class HBaseUtils {
 
     private static Configuration configuration;
 
@@ -19,16 +19,16 @@ public class HBaseConnect {
         configuration.addResource(new Path("C:\\hdp\\hbase-1.1.2\\conf\\hbase-site.xml"));
     }
 
-    public static Connection getConnection() throws IOException {
+    static Connection getConnection() throws IOException {
         if (configuration == null) {
             initializeConfiguration();
         }
         return ConnectionFactory.createConnection(configuration);
     }
 
-    public static Table getTable(String tableName) throws IOException {
-        if (tableName == null) {
-            throw new IOException("Table name can not be null");
+    static Table getTable(String tableName) throws Exception {
+        if (tableName == null || tableName.equalsIgnoreCase("")) {
+            throw new IllegalArgumentException("Table name can not be null or empty");
         }
         return getConnection().getTable(TableName.valueOf(tableName));
     }
