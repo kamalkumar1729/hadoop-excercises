@@ -1,8 +1,6 @@
 package hbase;
 
-import org.apache.hadoop.hbase.client.Get;
-import org.apache.hadoop.hbase.client.Result;
-import org.apache.hadoop.hbase.client.Table;
+import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.util.ArrayList;
@@ -14,16 +12,21 @@ public class HBaseReads {
     //  Other concepts/operations can be ignored for now, Okay.
 
     public static void main(String[] args) throws Exception {
-       HBaseReadsUsingGets();
-       // HBaseReadsUsingScan();
+        HBaseReadsUsingGets();
+        HBaseReadsUsingScan();
     }
 
-    private static void HBaseReadsUsingScan() {
+    private static void HBaseReadsUsingScan() throws Exception {
+        Scan scan = new Scan();
+        scan.setRowPrefixFilter(Bytes.toBytes("115"));
 
-        //
+        Table empTable = HBaseUtils.getTable("emp");
+        ResultScanner scanner = empTable.getScanner(scan);
 
-
-
+        /* ResultScanner => iterator */
+        for (Result result : scanner) {
+            System.out.println(result.toString());
+        }
     }
 
 
