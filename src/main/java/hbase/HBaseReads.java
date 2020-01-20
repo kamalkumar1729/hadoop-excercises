@@ -8,7 +8,7 @@ import java.util.List;
 
 public class HBaseReads {
 
-    // TODO => write & read are important.
+    // TODO :=> write & read are important.
     //  Other concepts/operations can be ignored for now, Okay.
 
     public static void main(String[] args) throws Exception {
